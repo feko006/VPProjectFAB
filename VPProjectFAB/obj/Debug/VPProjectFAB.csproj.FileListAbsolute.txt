@@ -1,1 +1,2 @@
 c:\users\ferid\Desktop\C#projects\VPProjectFAB\VPProjectFAB\bin\Debug\VPProjectFAB.exe.config
+C:\Users\AtanasK\VPProjectFAB\VPProjectFAB\bin\Debug\VPProjectFAB.exe.config
