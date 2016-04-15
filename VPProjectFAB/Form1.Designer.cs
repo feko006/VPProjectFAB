@@ -28,34 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbScreen = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbScreen)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbScreen
-            // 
-            this.pbScreen.Location = new System.Drawing.Point(13, 13);
-            this.pbScreen.Name = "pbScreen";
-            this.pbScreen.Size = new System.Drawing.Size(259, 236);
-            this.pbScreen.TabIndex = 0;
-            this.pbScreen.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.pbScreen);
+            this.ClientSize = new System.Drawing.Size(784, 601);
             this.Name = "Form1";
             this.Text = "VPProjectFAB";
-            ((System.ComponentModel.ISupportInitialize)(this.pbScreen)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pbScreen;
     }
 }
 

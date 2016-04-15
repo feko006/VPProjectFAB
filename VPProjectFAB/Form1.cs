@@ -12,6 +12,8 @@ namespace VPProjectFAB
 {
     public partial class Form1 : Form
     {
+        private Game game;
+
         public Form1()
         {
             InitializeComponent();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,11 @@ namespace VPProjectFAB
         public MenuScene()
         {
 
+        }
+
+        public void draw(Graphics g)
+        {
+            throw new NotImplementedException();
         }
 
         public void update()
