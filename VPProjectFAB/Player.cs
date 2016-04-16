@@ -11,25 +11,29 @@ namespace VPProjectFAB
     {
         public int X { get; set; }
         public int Y { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
         public int Speed { get; set; }
         public List<Bullet> Bullets { get; set; }
 
-        public Player(int x, int y , int speed)
+        public Player(int x, int y , int height, int width, int speed)
         {
             X = x;
             Y = y;
+            Height = height;
+            Width = width;
             Speed = speed;
             Bullets = new List<Bullet>(3);
         }
 
         public void moveUp()
         {
-            Y += Speed;
+            Y -= Speed;
         }
 
         public void moveDown()
         {
-            Y -= Speed;
+            Y += Speed;
         }
 
         public void shoot()
