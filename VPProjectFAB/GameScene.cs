@@ -9,8 +9,8 @@ namespace VPProjectFAB
 {
     class GameScene : Scene
     {
-        public Player1 player1 { get; set; }
-        public Player2 player2 { get; set; }
+        public Player player1 { get; set; }
+        public Player player2 { get; set; }
 
         public GameScene()
         {
