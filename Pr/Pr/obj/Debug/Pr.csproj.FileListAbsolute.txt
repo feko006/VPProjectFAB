@@ -1,0 +1,12 @@
+c:\users\bonne\documents\visual studio 2015\Projects\Pr\Pr\bin\Debug\Pr.exe.config
+c:\users\bonne\documents\visual studio 2015\Projects\Pr\Pr\bin\Debug\Pr.exe
+c:\users\bonne\documents\visual studio 2015\Projects\Pr\Pr\bin\Debug\Pr.pdb
+c:\users\bonne\documents\visual studio 2015\Projects\Pr\Pr\obj\Debug\Pr.csprojResolveAssemblyReference.cache
+c:\users\bonne\documents\visual studio 2015\Projects\Pr\Pr\obj\Debug\Pr.Form1.resources
+c:\users\bonne\documents\visual studio 2015\Projects\Pr\Pr\obj\Debug\Pr.Properties.Resources.resources
+c:\users\bonne\documents\visual studio 2015\Projects\Pr\Pr\obj\Debug\Pr.csproj.GenerateResource.Cache
+c:\users\bonne\documents\visual studio 2015\Projects\Pr\Pr\obj\Debug\Pr.exe
+c:\users\bonne\documents\visual studio 2015\Projects\Pr\Pr\obj\Debug\Pr.pdb
+C:\Users\Bonne\VPProjectFAB\Pr\Pr\bin\Debug\Pr.exe.config
+C:\Users\Bonne\VPProjectFAB\Pr\Pr\obj\Debug\Pr.exe
+C:\Users\Bonne\VPProjectFAB\Pr\Pr\obj\Debug\Pr.pdb
