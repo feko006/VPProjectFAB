@@ -7,26 +7,29 @@ using System.Threading.Tasks;
 
 namespace VPProjectFAB
 {
-    class Player1
+    class Player
     {
         public int X { get; set; }
         public int Y { get; set; }
         public int Speed { get; set; }
         public List<Bullet> Bullets { get; set; }
 
-        public Player1()
+        public Player(int x, int y , int speed)
         {
-
+            X = x;
+            Y = y;
+            Speed = speed;
+            Bullets = new List<Bullet>(3);
         }
 
         public void moveUp()
         {
-
+            Y += Speed;
         }
 
         public void moveDown()
         {
-
+            Y -= Speed;
         }
 
         public void shoot()
