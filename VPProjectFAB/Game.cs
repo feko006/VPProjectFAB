@@ -13,7 +13,17 @@ namespace VPProjectFAB
 
         public Game()
         {
+            goToMenu();
+        }
 
+        public void startGame()
+        {
+            scene = new GameScene();
+        }
+
+        public void goToMenu()
+        {
+            scene = new MenuScene();
         }
 
         public void update()

@@ -14,17 +14,23 @@ namespace VPProjectFAB
 
         public GameScene()
         {
-
+            //player1 = new Player();
         }
 
         public void draw(Graphics g)
         {
-            throw new NotImplementedException();
+            player1.draw(g);
+            player2.draw(g);
         }
 
         public void update()
         {
             throw new NotImplementedException();
+        }
+
+        public void checkCollisions()
+        {
+
         }
     }
 }

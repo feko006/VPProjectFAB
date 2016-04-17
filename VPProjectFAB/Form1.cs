@@ -17,6 +17,7 @@ namespace VPProjectFAB
         public Form1()
         {
             InitializeComponent();
+            game = new Game();
         }
     }
 }
