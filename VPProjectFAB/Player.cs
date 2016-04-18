@@ -73,7 +73,8 @@ namespace VPProjectFAB
         public void draw(Graphics g)
         {
             // draw the player
-            
+
+            g.FillRectangle(Brushes.White, X, Y, Width, Height);
 
             // then bullets
 
@@ -87,11 +88,13 @@ namespace VPProjectFAB
         {
             foreach (Bullet bullet in Bullets)
             {
-                bullet.X += BulletSpeed; // moves the bullet forward
-                if (bullet.X > Game.BULLET_MAX_DISTANCE)
-                {
-                    // destroy the bullet, maybe List is not perfect?
-                }
+                bullet.move();
+                // bullet knows when to commit suicide Kappa
+                // najverojatno kje se predava nekoj argument za dolzhina na ekran preku nekoi funkcii
+                // pa kje znae ako x > that suicide() xD
+                // ili da merime kolku rastojanie ima pominato i da ima max rastojanie
+                // shto kje se predava od samata forma pa nataka
+                // DA SE RAZMISLI DALI BULLETS DA SE CHUVAAT VO SET
             }
         }
     }
