@@ -19,5 +19,11 @@ namespace VPProjectFAB
             InitializeComponent();
             game = new Game();
         }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            game.update();
+            game.draw(CreateGraphics());
+        }
     }
 }
