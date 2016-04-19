@@ -17,7 +17,15 @@ namespace VPProjectFAB
         public Form1()
         {
             InitializeComponent();
-            game = new Game();
+            DoubleBuffered = true;
+            game = new Game(this);
+            timer.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            game.update();
+            game.draw(CreateGraphics());
         }
     }
 }

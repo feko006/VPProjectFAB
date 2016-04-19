@@ -31,7 +31,7 @@ namespace VPProjectFAB
 
         public void draw(Graphics g)
         {
-
+            g.FillRectangle(Brushes.White, X, Y, Width, Height);
         }
     }
 }

@@ -12,21 +12,25 @@ namespace VPProjectFAB
         public const int BULLET_MAX_DISTANCE = 800; // od tepka staiv treba da se nashtima ova
                                                     // ova kje odluchi koga kje se unishti buletot
         Scene scene;
+        Form1 form1;
 
 
-        public Game()
+        public Game(Form1 f)
         {
-            goToMenu();
+            form1 = f; // radi detali za ekranot (dolzhina, shirina), najverojatno kje sakame i na resizeend da napravime
+                        // funkcija koja kje ja apdejtira ovaa promenliva neli
+            startGame(); // za testiranje na iscrtuvanje
+            // goToMenu();
         }
 
         public void startGame()
         {
-            scene = new GameScene();
+            scene = new GameScene(form1);
         }
 
         public void goToMenu()
         {
-            scene = new MenuScene();
+            scene = new MenuScene(form1);
         }
 
         public void update()

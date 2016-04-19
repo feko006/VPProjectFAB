@@ -9,9 +9,11 @@ namespace VPProjectFAB
 {
     class MenuScene : Scene
     {
-        public MenuScene()
-        {
+        Form1 form1;
 
+        public MenuScene(Form1 f)
+        {
+            form1 = f;
         }
 
         public void draw(Graphics g)

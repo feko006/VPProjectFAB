@@ -11,15 +11,18 @@ namespace VPProjectFAB
     {
         public Player player1 { get; set; }
         public Player player2 { get; set; }
+        Form1 form1;
 
-        public GameScene()
+        public GameScene(Form1 f)
         {
-            //player1 = new Player();
-
+            form1 = f;
+            player1 = new Player(0, form1.Height / 2 - 50, 50, 50, 5);
+            player2 = new Player(form1.Width - 75, form1.Height / 2 - 50, 50, 50, 5);
         }
 
         public void draw(Graphics g)
         {
+            g.Clear(Color.Black);
             player1.draw(g);
             player2.draw(g);
         }
