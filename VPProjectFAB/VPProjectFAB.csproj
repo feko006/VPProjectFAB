@@ -85,6 +85,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\cave story moon pixelart nighttime pixelation skyscapes 1920x1080 wallpaper_www.wallpaperto.com_19.jpg" />
+    <Content Include="img\kvit.jpg" />
+    <Content Include="img\plai.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
