@@ -18,12 +18,17 @@ namespace VPProjectFAB
 
         public void draw(Graphics g)
         {
-            throw new NotImplementedException();
+            
+        }
+
+        public Player getPlayer(int n)
+        {
+            return null;
         }
 
         public void update()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

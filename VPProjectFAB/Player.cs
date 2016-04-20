@@ -9,6 +9,8 @@ namespace VPProjectFAB
 {
     class Player
     {
+        Form1 form;
+
         public int X { get; set; }
         public int Y { get; set; }
         public int Height { get; set; }
@@ -18,9 +20,10 @@ namespace VPProjectFAB
 
         public List<Bullet> Bullets { get; set; }
         public int BulletSpeed { get; set; } // da ja dobiva kako argument + ili - od kaj puka
-
-        public Player(int x, int y, int height, int width, int speed)
+        //ja prenesuva formata
+        public Player(int x, int y, int height, int width, int speed, Form1 form)
         {
+            this.form = form;
             X = x;
             Y = y;
             Height = height;
@@ -29,15 +32,18 @@ namespace VPProjectFAB
             Bullets = new List<Bullet>(3);
             BulletSpeed = 5;
         }
-
+        //staven limit; MOVE DOWN NE RABOTE SO HEIGHT
         public void moveUp()
         {
-            Y -= Speed;
+            if (Y >= 0)
+                Y -= Speed;
         }
 
         public void moveDown()
         {
-            Y += Speed;
+            //height not working right fix dis sniz
+            if (Y + Height <= form.Height)
+                Y += Speed;
         }
 
         public void shoot()

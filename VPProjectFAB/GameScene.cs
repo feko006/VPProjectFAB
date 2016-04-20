@@ -16,8 +16,8 @@ namespace VPProjectFAB
         public GameScene(Form1 f)
         {
             form1 = f;
-            player1 = new Player(0, form1.Height / 2 - 50, 50, 50, 5);
-            player2 = new Player(form1.Width - 75, form1.Height / 2 - 50, 50, 50, 5);
+            player1 = new Player(0, form1.Height / 2 - 50, 50, 50, 5, form1);
+            player2 = new Player(form1.Width - 75, form1.Height / 2 - 50, 50, 50, 5, form1);
         }
 
         public void draw(Graphics g)
@@ -57,6 +57,20 @@ namespace VPProjectFAB
                 }
             }
 
+        }
+        /// <summary>
+        /// Funkcija za zimanje player
+        /// </summary>
+        /// <param name="n">N kazuva koj player sakame da go zememe</param>
+        /// <returns>Vrakja player</returns>
+        public Player getPlayer(int n)
+        {
+            if (n == 1)
+                return player1;
+            if (n == 2)
+                return player2;
+            return
+                null;
         }
     }
 }

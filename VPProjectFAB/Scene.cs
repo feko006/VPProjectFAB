@@ -11,5 +11,6 @@ namespace VPProjectFAB
     {
         void update();
         void draw(Graphics g);
+        Player getPlayer(int n);
     }
 }
