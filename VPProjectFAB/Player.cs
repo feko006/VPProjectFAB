@@ -42,7 +42,8 @@ namespace VPProjectFAB
         public void moveDown()
         {
             //height not working right fix dis sniz
-            if (Y + Height <= form.Height)
+            //fixt
+            if (Y + Height <= form.Height - 45)
                 Y += Speed;
         }
 

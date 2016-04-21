@@ -19,8 +19,6 @@ namespace VPProjectFAB
             InitializeComponent();
             DoubleBuffered = true;
             game = new Game(this);
-            //game = new Game(this);
-            //timer.Start();
         }
 
         private void timer_Tick(object sender, EventArgs e)
