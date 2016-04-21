@@ -41,7 +41,6 @@ namespace VPProjectFAB
             pbPlay.Visible = false;
             pbQuit.Visible = false;
             timer.Start();
-            game.startGame();
         }
 
         private void pbPlay_MouseEnter(object sender, EventArgs e)
@@ -84,9 +83,9 @@ namespace VPProjectFAB
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.W)
-                game.player1Up();
+                game.player1.moveUp();
             if (e.KeyCode == Keys.S)
-                game.player1Down();
+                game.player1.moveDown();
         }
     }
 }
