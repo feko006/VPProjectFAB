@@ -17,3 +17,11 @@ C:\Users\Ferid\Desktop\C#projects\VPProjectFAB\VPProjectFAB\bin\Debug\VPProjectF
 C:\Users\Ferid\Desktop\C#projects\VPProjectFAB\VPProjectFAB\bin\Debug\VPProjectFAB.pdb
 C:\Users\Ferid\Desktop\C#projects\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.exe
 C:\Users\Ferid\Desktop\C#projects\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.pdb
+C:\Users\Bonne\VPProjectFAB\VPProjectFAB\bin\Debug\VPProjectFAB.exe
+C:\Users\Bonne\VPProjectFAB\VPProjectFAB\bin\Debug\VPProjectFAB.pdb
+C:\Users\Bonne\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.csprojResolveAssemblyReference.cache
+C:\Users\Bonne\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.Form1.resources
+C:\Users\Bonne\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.Properties.Resources.resources
+C:\Users\Bonne\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.csproj.GenerateResource.Cache
+C:\Users\Bonne\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.exe
+C:\Users\Bonne\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.pdb
