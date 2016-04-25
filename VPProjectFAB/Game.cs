@@ -44,7 +44,7 @@ namespace VPProjectFAB
         /// </summary>
         public void checkCollisions()
         {
-            List<Bullet> enemyBullets = player2.Bullets;
+            HashSet<Bullet> enemyBullets = player2.Bullets;
             foreach (Bullet bullet in enemyBullets)
             { // checks enemy bullets
                 if (player1.checkCollision(bullet))
