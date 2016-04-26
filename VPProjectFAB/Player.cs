@@ -18,18 +18,20 @@ namespace VPProjectFAB
 
         public int Speed { get; set; } // player speed
 
-        public List<Bullet> Bullets { get; set; }
+        //public List<Bullet> Bullets { get; set; } lista e malku nz
+        public HashSet<Bullet> Bullets { get; set; }
         public int BulletSpeed { get; set; } // da ja dobiva kako argument + ili - od kaj puka
-        //ja prenesuva formata
+
+        //ja prenesuva formata iskreno mnoogu pofino bi bilo width height da se chuvaat vo player
         public Player(int x, int y, int height, int width, int speed, Form1 form)
-        {
+        { // za form i game da ne se zamaraat so tie brojki voopshto
             this.form = form;
             X = x;
             Y = y;
             Height = height;
             Width = width;
             Speed = speed;
-            Bullets = new List<Bullet>(3);
+            Bullets = new HashSet<Bullet>();
             BulletSpeed = 5;
         }
         //staven limit; MOVE DOWN NE RABOTE SO HEIGHT
@@ -77,6 +79,11 @@ namespace VPProjectFAB
             return false; // there is no overlap if this is reached
         }
 
+        public void fireRight()
+        {
+            Bullets.Add(new Bullet(X, Y));
+        }
+
         public void draw(Graphics g)
         {
             // draw the player
@@ -93,16 +100,20 @@ namespace VPProjectFAB
 
         public void update()
         {
-            foreach (Bullet bullet in Bullets)
-            {
-                bullet.move();
-                // bullet knows when to commit suicide Kappa
-                // najverojatno kje se predava nekoj argument za dolzhina na ekran preku nekoi funkcii
-                // pa kje znae ako x > that suicide() xD
-                // ili da merime kolku rastojanie ima pominato i da ima max rastojanie
-                // shto kje se predava od samata forma pa nataka
-                // DA SE RAZMISLI DALI BULLETS DA SE CHUVAAT VO SET
-            }
+            if (Bullets.Count > 0)
+                foreach (Bullet bullet in Bullets)
+                {
+                    bullet.move();
+                    //if (bullet.X > form.Width) // ovde go nishtam treba da se smisli so iterator namesto vaka
+                    //    Bullets.Remove(bullet); // mislam deka taka kje go pretupime bulet deka ne treba
+                    // samo da zgine tuku da se izbrishe od playerot
+                    // bullet knows when to commit suicide Kappa
+                    // najverojatno kje se predava nekoj argument za dolzhina na ekran preku nekoi funkcii
+                    // pa kje znae ako x > that suicide() xD
+                    // ili da merime kolku rastojanie ima pominato i da ima max rastojanie
+                    // shto kje se predava od samata forma pa nataka
+                    // DA SE RAZMISLI DALI BULLETS DA SE CHUVAAT VO SET
+                }
         }
     }
 }

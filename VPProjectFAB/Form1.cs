@@ -86,6 +86,8 @@ namespace VPProjectFAB
                 game.player1.moveUp();
             if (e.KeyCode == Keys.S)
                 game.player1.moveDown();
+            if (e.KeyCode == Keys.H)
+                game.player1.fireRight();
         }
     }
 }
