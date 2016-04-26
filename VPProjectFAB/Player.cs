@@ -16,13 +16,13 @@ namespace VPProjectFAB
         public int Height { get; set; }
         public int Width { get; set; }
 
-        public int Speed { get; set; } // player speed
-
-        //public List<Bullet> Bullets { get; set; } lista e malku nz
+        public int Speed { get; set; }
+        
         public HashSet<Bullet> Bullets { get; set; }
-        public int BulletSpeed { get; set; } // da ja dobiva kako argument + ili - od kaj puka
 
         //ja prenesuva formata iskreno mnoogu pofino bi bilo width height da se chuvaat vo player
+        //prenesuva samo referenca, podobro e referenca bidejki formata mozhe da se menuva dur se igra
+        //taka sekogash kje se vadi height pravilen od formata ako e brojche kje treba rachno da se menuva
         public Player(int x, int y, int height, int width, int speed, Form1 form)
         { // za form i game da ne se zamaraat so tie brojki voopshto
             this.form = form;
@@ -32,7 +32,6 @@ namespace VPProjectFAB
             Width = width;
             Speed = speed;
             Bullets = new HashSet<Bullet>();
-            BulletSpeed = 5;
         }
         //staven limit; MOVE DOWN NE RABOTE SO HEIGHT
         public void moveUp()
@@ -43,15 +42,8 @@ namespace VPProjectFAB
 
         public void moveDown()
         {
-            //height not working right fix dis sniz
-            //fixt
             if (Y + Height <= form.Height - 45)
                 Y += Speed;
-        }
-
-        public void shoot()
-        {
-
         }
 
         public void getHit()
@@ -105,10 +97,13 @@ namespace VPProjectFAB
 
         public void update()
         {
+            HashSet<Bullet> deadList = new HashSet<Bullet>();
             if (Bullets.Count > 0)
                 foreach (Bullet bullet in Bullets)
                 {
                     bullet.move();
+                    if (bullet.Distance >= form.Width)
+                        deadList.Add(bullet);
                     //if (bullet.X > form.Width) // ovde go nishtam treba da se smisli so iterator namesto vaka
                     //    Bullets.Remove(bullet); // mislam deka taka kje go pretupime bulet deka ne treba
                     // samo da zgine tuku da se izbrishe od playerot
@@ -118,6 +113,12 @@ namespace VPProjectFAB
                     // ili da merime kolku rastojanie ima pominato i da ima max rastojanie
                     // shto kje se predava od samata forma pa nataka
                     // DA SE RAZMISLI DALI BULLETS DA SE CHUVAAT VO SET
+                    // vaka mi se vide najdobro da se reshi ova
+                }
+            if (deadList.Count > 0) 
+                foreach (Bullet bullet in deadList)
+                {
+                    Bullets.Remove(bullet);
                 }
         }
     }

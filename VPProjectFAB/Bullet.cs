@@ -16,17 +16,21 @@ namespace VPProjectFAB
         public int Width { get; set; } = 50;
         public int Speed { get; set; } = 30;
 
+        public int Distance { get; set; }
+
         public Bullet(int x, int y, bool right)
         {
             X = x;
             Y = y;
             if (!right)
                 Speed = -Speed;
+            Distance = 0;
         }
 
         public void move()
         {
             X += Speed;
+            Distance += Speed;
         }
 
         public void draw(Graphics g)

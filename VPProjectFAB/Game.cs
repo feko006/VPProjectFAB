@@ -12,14 +12,14 @@ namespace VPProjectFAB
         public Player player1 { get; set; }
         public Player player2 { get; set; }
         Form1 form1;
-        public const int BULLET_MAX_DISTANCE = 800; // od tepka staiv treba da se nashtima ova
-                                                    // ova kje odluchi koga kje se unishti buletot
         public static bool p1up { get; set; }
         public static bool p1down { get; set; }
         public static bool p1shoot { get; set; }
         public static bool p2up { get; set; }
         public static bool p2down { get; set; }
         public static bool p2shoot { get; set; }
+        public static int p1shootDelay { get; set; }
+        public static int p2shootDelay { get; set; }
 
 
         public Game(Form1 f)
@@ -35,6 +35,8 @@ namespace VPProjectFAB
             p2up = false;
             p2down = false;
             p2shoot = false;
+            p1shootDelay = 0;
+            p2shootDelay = 0;
         }
 
         public void update()
@@ -45,15 +47,26 @@ namespace VPProjectFAB
                 player1.moveUp();
             if (p1down && !p1up)
                 player1.moveDown();
-            if (p1shoot)
+            if (p1shoot && p1shootDelay == 0)
+            {
                 player1.fireRight();
+                p1shootDelay = 10;
+            }
             player2.update();
             if (p2up && !p2down)
                 player2.moveUp();
             if (p2down && !p2up)
                 player2.moveDown();
-            if (p2shoot)
+            if (p2shoot && p2shootDelay == 0)
+            {
                 player2.fireLeft();
+                p2shootDelay = 10;
+            }
+            if (p1shootDelay > 0)
+                p1shootDelay--;
+            if (p2shootDelay > 0)
+                p2shootDelay--;
+
         }
 
         public void draw(Graphics g)
