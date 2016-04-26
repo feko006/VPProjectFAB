@@ -14,6 +14,12 @@ namespace VPProjectFAB
         Form1 form1;
         public const int BULLET_MAX_DISTANCE = 800; // od tepka staiv treba da se nashtima ova
                                                     // ova kje odluchi koga kje se unishti buletot
+        public static bool p1up { get; set; }
+        public static bool p1down { get; set; }
+        public static bool p1shoot { get; set; }
+        public static bool p2up { get; set; }
+        public static bool p2down { get; set; }
+        public static bool p2shoot { get; set; }
 
 
         public Game(Form1 f)
@@ -23,13 +29,31 @@ namespace VPProjectFAB
                        //startGame(); // za testiranje na iscrtuvanje
             player1 = new Player(0, form1.Height / 2 - 50, 50, 50, 5, form1);
             player2 = new Player(form1.Width - 75, form1.Height / 2 - 50, 50, 50, 5, form1);
+            p1up = false;
+            p1down = false;
+            p1shoot = false;
+            p2up = false;
+            p2down = false;
+            p2shoot = false;
         }
 
         public void update()
         {
             checkCollisions();
             player1.update();
+            if (p1up && !p1down)
+                player1.moveUp();
+            if (p1down && !p1up)
+                player1.moveDown();
+            if (p1shoot)
+                player1.fireRight();
             player2.update();
+            if (p2up && !p2down)
+                player2.moveUp();
+            if (p2down && !p2up)
+                player2.moveDown();
+            if (p2shoot)
+                player2.fireLeft();
         }
 
         public void draw(Graphics g)

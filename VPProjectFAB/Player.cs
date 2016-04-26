@@ -81,7 +81,12 @@ namespace VPProjectFAB
 
         public void fireRight()
         {
-            Bullets.Add(new Bullet(X, Y));
+            Bullets.Add(new Bullet(X + 20, Y + 20, true));
+        }
+
+        public void fireLeft()
+        {
+            Bullets.Add(new Bullet(X, Y + 20, false));
         }
 
         public void draw(Graphics g)

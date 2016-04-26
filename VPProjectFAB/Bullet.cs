@@ -16,10 +16,12 @@ namespace VPProjectFAB
         public int Width { get; set; } = 50;
         public int Speed { get; set; } = 30;
 
-        public Bullet(int x, int y)
+        public Bullet(int x, int y, bool right)
         {
-            X = x + 20;
-            Y = y + 20;
+            X = x;
+            Y = y;
+            if (!right)
+                Speed = -Speed;
         }
 
         public void move()

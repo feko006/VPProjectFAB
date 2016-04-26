@@ -13,6 +13,7 @@ namespace VPProjectFAB
     public partial class Form1 : Form
     {
         private Game game;
+        bool handled;
 
         public Form1()
         {
@@ -82,12 +83,59 @@ namespace VPProjectFAB
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            handled = false;
             if (e.KeyCode == Keys.W)
-                game.player1.moveUp();
-            if (e.KeyCode == Keys.S)
-                game.player1.moveDown();
-            if (e.KeyCode == Keys.H)
-                game.player1.fireRight();
+            {
+                Game.p1up = true;
+                handled = true;
+            }
+            else if (e.KeyCode == Keys.S)
+            {
+                Game.p1down = true;
+                handled = true;
+            }
+            else if (e.KeyCode == Keys.Space)
+            {
+                Game.p1shoot = true;
+                handled = true;
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                Game.p2up = true;
+                handled = true;
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                Game.p2down = true;
+                handled = true;
+            }
+            else if (e.KeyCode == Keys.NumPad0)
+            {
+                Game.p2shoot = true;
+                handled = true;
+            }
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (handled)
+                e.Handled = true;
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.W)
+                Game.p1up = false;
+            else if (e.KeyCode == Keys.S)
+                Game.p1down = false;
+            else if (e.KeyCode == Keys.Space)
+                Game.p1shoot = false;
+            else if (e.KeyCode == Keys.Up)
+                Game.p2up = false;
+            else if (e.KeyCode == Keys.Down)
+                Game.p2down = false;
+            else if (e.KeyCode == Keys.NumPad0)
+                Game.p2shoot = false;
         }
     }
 }
