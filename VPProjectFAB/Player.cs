@@ -16,21 +16,21 @@ namespace VPProjectFAB
         public int Height { get; set; }
         public int Width { get; set; }
 
-        public int Speed { get; set; } // player speed
+        public int Speed { get; set; }// player speed
 
         //public List<Bullet> Bullets { get; set; } lista e malku nz
         public HashSet<Bullet> Bullets { get; set; }
         public int BulletSpeed { get; set; } // da ja dobiva kako argument + ili - od kaj puka
 
         //ja prenesuva formata iskreno mnoogu pofino bi bilo width height da se chuvaat vo player
-        public Player(int x, int y, int height, int width, int speed, Form1 form)
+        public Player(int x, int y, int height, int width, Form1 form)
         { // za form i game da ne se zamaraat so tie brojki voopshto
             this.form = form;
             X = x;
             Y = y;
             Height = height;
             Width = width;
-            Speed = speed;
+            Speed = 20;
             Bullets = new HashSet<Bullet>();
             BulletSpeed = 5;
         }
