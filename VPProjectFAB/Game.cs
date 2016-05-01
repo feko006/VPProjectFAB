@@ -18,8 +18,8 @@ namespace VPProjectFAB
             form1 = f; // radi detali za ekranot (dolzhina, shirina), najverojatno kje sakame i na resizeend da napravime
                        // funkcija koja kje ja apdejtira ovaa promenliva neli
                        //startGame(); // za testiranje na iscrtuvanje
-            player1 = new Player(0, form1.Height / 2 - 50, 50, 50, form1, 5, 10);
-            player2 = new Player(form1.Width - 75, form1.Height / 2 - 50, 50, 50, form1, 5, 15);
+            player1 = new Player("Player 1", 0, form1.Height / 2 - 50, 50, 50, form1, 5, 10);
+            player2 = new Player("Player 2", form1.Width - 75, form1.Height / 2 - 50, 50, 50, form1, 5, 10);
         }
 
         public void update()
@@ -46,7 +46,9 @@ namespace VPProjectFAB
             { // checks enemy bullets
                 if (player1.checkCollision(bullet))
                 { // there is hit
+                    form1.shouldUpdate = false;
                     player1.getHit();
+                    return;
                 }
             }
 
@@ -56,7 +58,9 @@ namespace VPProjectFAB
             { // check every bullet
                 if (player2.checkCollision(bullet))
                 { // we hit him
+                    form1.shouldUpdate = false;
                     player2.getHit();
+                    return;
                 }
             }
 

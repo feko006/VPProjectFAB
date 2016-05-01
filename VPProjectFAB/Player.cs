@@ -4,12 +4,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VPProjectFAB
 {
     class Player
     {
         Form1 form;
+        public string Name { get; set; }
 
         public int X { get; set; }
         public int Y { get; set; }
@@ -23,9 +25,10 @@ namespace VPProjectFAB
         public HashSet<Bullet> Bullets { get; set; }
 
         //ja prenesuva formata iskreno mnoogu pofino bi bilo width height da se chuvaat vo player
-        public Player(int x, int y, int height, int width, Form1 form, int speed, int bulletSpeed)
+        public Player(string name, int x, int y, int height, int width, Form1 form, int speed, int bulletSpeed)
         { // za form i game da ne se zamaraat so tie brojki voopshto
             this.form = form;
+            Name = name;
             X = x;
             Y = y;
             Height = height;
@@ -34,7 +37,7 @@ namespace VPProjectFAB
             BulletSpeed = bulletSpeed;
             Bullets = new HashSet<Bullet>();
         }
-        //staven limit; MOVE DOWN NE RABOTE SO HEIGHT
+
         public void moveUp()
         {
             if (Y >= 0)
@@ -43,20 +46,17 @@ namespace VPProjectFAB
 
         public void moveDown()
         {
-            //height not working right fix dis sniz
-            //fixt
             if (Y + Height <= form.Height - 45)
                 Y += Speed;
         }
 
-        public void shoot()
-        {
-
-        }
-
         public void getHit()
         {
-
+            DialogResult dr = MessageBox.Show(string.Format("{0} lost...", Name), "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            if (dr == DialogResult.OK)
+            {
+                form.goToMenu();
+            }
         }
 
         /// <summary>

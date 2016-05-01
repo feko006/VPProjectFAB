@@ -13,6 +13,7 @@ namespace VPProjectFAB
     public partial class Form1 : Form
     {
         private Game game;
+        public bool shouldUpdate { get; set; }
 
         public bool p1Up { get; set; }
         public bool p1Down { get; set; }
@@ -35,6 +36,8 @@ namespace VPProjectFAB
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            if (!shouldUpdate)
+                return;
             if (p1firerate >= 15)
             {
                 if (p1Shoot)
@@ -67,13 +70,14 @@ namespace VPProjectFAB
                 game.player2.moveDown();
             game.update();
             game.draw(CreateGraphics());
-        }  
+        }
 
         public void goToMenu()
-        { 
+        {
             pbBackground.Visible = true;
             pbPlay.Visible = true;
             pbQuit.Visible = true;
+            game = new Game(this);
             timer.Stop();
         }
 
@@ -82,6 +86,7 @@ namespace VPProjectFAB
             pbBackground.Visible = false;
             pbPlay.Visible = false;
             pbQuit.Visible = false;
+            shouldUpdate = true;
             timer.Start();
         }
 
