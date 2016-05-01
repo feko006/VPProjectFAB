@@ -17,22 +17,22 @@ namespace VPProjectFAB
         public int Width { get; set; }
 
         public int Speed { get; set; }// player speed
+        public int BulletSpeed { get; set; }//bullet speed
 
         //public List<Bullet> Bullets { get; set; } lista e malku nz
         public HashSet<Bullet> Bullets { get; set; }
-        public int BulletSpeed { get; set; } // da ja dobiva kako argument + ili - od kaj puka
 
         //ja prenesuva formata iskreno mnoogu pofino bi bilo width height da se chuvaat vo player
-        public Player(int x, int y, int height, int width, Form1 form)
+        public Player(int x, int y, int height, int width, Form1 form, int speed, int bulletSpeed)
         { // za form i game da ne se zamaraat so tie brojki voopshto
             this.form = form;
             X = x;
             Y = y;
             Height = height;
             Width = width;
-            Speed = 20;
+            Speed = speed;
+            BulletSpeed = bulletSpeed;
             Bullets = new HashSet<Bullet>();
-            BulletSpeed = 5;
         }
         //staven limit; MOVE DOWN NE RABOTE SO HEIGHT
         public void moveUp()
@@ -81,7 +81,7 @@ namespace VPProjectFAB
 
         public void fireRight()
         {
-            Bullets.Add(new Bullet(X, Y));
+            Bullets.Add(new Bullet(X + 20, Y + 20, 5, 50, BulletSpeed));
         }
 
         public void draw(Graphics g)

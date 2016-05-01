@@ -13,35 +13,41 @@ namespace VPProjectFAB
     public partial class Form1 : Form
     {
         private Game game;
-        public bool pressedUp;
-        public bool pressedDown;
-        public bool shooting1;
-        public int firerate1;
+
+        public bool p1Up { get; set; }
+        public bool p1Down { get; set; }
+        public bool p1Shoot { get; set; }
+        public int p1firerate { get; set; }
+
+        public bool p2Up { get; set; }
+        public bool p2Down { get; set; }
+        public bool p2Shoot { get; set; }
+        public int p2firerate { get; set; }
 
         public Form1()
         {
             InitializeComponent();
             DoubleBuffered = true;
             game = new Game(this);
-            firerate1 = 15;
+            p1firerate = 10;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (firerate1 >= 15)
+            if (p1firerate >= 15)
             {
-                if (shooting1)
+                if (p1Shoot)
                 {
                     game.player1.fireRight();
-                    firerate1 = 0;
+                    p1firerate = 0;
                 }
-                firerate1--;
+                p1firerate--;
             }
             else
-                firerate1++;
-            if (pressedUp)
+                p1firerate++;
+            if (p1Up)
                 game.player1.moveUp();
-            if (pressedDown)
+            if (p1Down)
                 game.player1.moveDown();
            // if (shooting1)
               //  game.player1.fireRight();
@@ -105,13 +111,13 @@ namespace VPProjectFAB
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.W)
-                pressedUp = true;
+                p1Up = true;
             //game.player1.moveUp();
             if (e.KeyCode == Keys.S)
-                pressedDown = true;
+                p1Down = true;
             // game.player1.moveDown();
             if (e.KeyCode == Keys.H)
-                shooting1 = true;
+                p1Shoot = true;
                 //game.player1.fireRight();
         }
 
@@ -123,13 +129,13 @@ namespace VPProjectFAB
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.W)
-                pressedUp = false;
+                p1Up = false;
             //game.player1.moveUp();
             if (e.KeyCode == Keys.S)
-                pressedDown = false;
+                p1Down = false;
             // game.player1.moveDown();
             if (e.KeyCode == Keys.H)
-                shooting1 = false;
+                p1Shoot = false;
         }
     }
 }

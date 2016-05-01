@@ -12,17 +12,14 @@ namespace VPProjectFAB
         public Player player1 { get; set; }
         public Player player2 { get; set; }
         Form1 form1;
-        public const int BULLET_MAX_DISTANCE = 800; // od tepka staiv treba da se nashtima ova
-                                                    // ova kje odluchi koga kje se unishti buletot
-
 
         public Game(Form1 f)
         {
             form1 = f; // radi detali za ekranot (dolzhina, shirina), najverojatno kje sakame i na resizeend da napravime
                        // funkcija koja kje ja apdejtira ovaa promenliva neli
                        //startGame(); // za testiranje na iscrtuvanje
-            player1 = new Player(0, form1.Height / 2 - 50, 50, 50, form1);
-            player2 = new Player(form1.Width - 75, form1.Height / 2 - 50, 50, 50,form1);
+            player1 = new Player(0, form1.Height / 2 - 50, 50, 50, form1, 5, 10);
+            player2 = new Player(form1.Width - 75, form1.Height / 2 - 50, 50, 50, form1, 5, 15);
         }
 
         public void update()
