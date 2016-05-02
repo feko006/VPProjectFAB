@@ -42,7 +42,7 @@ namespace VPProjectFAB
             {
                 if (p1Shoot)
                 {
-                    game.player1.fireRight();
+                    game.player1.fire();
                     p1firerate = 0;
                 }
                 p1firerate--;
@@ -57,7 +57,7 @@ namespace VPProjectFAB
             {
                 if (p2Shoot)
                 {
-                    game.player2.fireLeft();
+                    game.player2.fire();
                     p2firerate = 0;
                 }
                 p2firerate--;
@@ -69,7 +69,9 @@ namespace VPProjectFAB
             if (p2Down)
                 game.player2.moveDown();
             game.update();
-            game.draw(CreateGraphics());
+            Graphics g = CreateGraphics();
+            game.draw(g);
+            g.Dispose();
         }
 
         public void goToMenu()

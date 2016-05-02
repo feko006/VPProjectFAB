@@ -55,7 +55,7 @@ namespace VPProjectFAB
 
         public void getHit(int damage)
         {
-            CurrentHealth -= damage;
+            CurrentHealth = CurrentHealth - damage;
             if(CurrentHealth <= 0)
             {
                 DialogResult dr = MessageBox.Show(string.Format("{0} lost...", Name), "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
@@ -91,19 +91,16 @@ namespace VPProjectFAB
 
             return false; // there is no overlap if this is reached
         }
-
-        public void fireRight()
-        {
-            Bullets.Add(new Bullet(X + 20, Y + 20, 5, 50, BulletSpeed));
-        }
         
-        public void fireLeft()
+        public void fire()
         {
-            Bullets.Add(new Bullet(X, Y + 20, 5, 50, -BulletSpeed));
+            Bullets.Add(new Bullet(X, Y + 20, 5, 50, BulletSpeed));
         }
 
         public void draw(Graphics g)
         {
+            Pen p = new Pen(Color.White, 1);
+
             // draw the player
 
             g.FillRectangle(Brushes.White, X, Y, Width, Height);
@@ -114,6 +111,22 @@ namespace VPProjectFAB
             {
                 bullet.draw(g);
             }
+
+            // draw the healthbar
+
+            int oneBar = 225 / MaxHealth;
+            if (BulletSpeed > 0) // if its the left player (player1)
+            {
+                g.FillRectangle(Brushes.White, 75, 10, oneBar * CurrentHealth, 20);
+                g.DrawRectangle(p, 75 + oneBar * CurrentHealth, 10, oneBar * (MaxHealth - CurrentHealth), 20);
+            }
+            if(BulletSpeed < 0) // the other player
+            {
+                g.FillRectangle(Brushes.White, form.Width - 325, 10, oneBar * CurrentHealth, 20);
+                g.DrawRectangle(p, form.Width - 325 + oneBar * CurrentHealth, 10, oneBar * (MaxHealth - CurrentHealth), 20);
+            }
+
+            p.Dispose();
         }
 
         public void update()
