@@ -13,47 +13,74 @@ namespace VPProjectFAB
     public partial class Form1 : Form
     {
         private Game game;
-        public bool pressedUp;
-        public bool pressedDown;
-        public bool shooting1;
-        public int firerate1;
+        public bool shouldUpdate { get; set; }
+
+        public bool p1Up { get; set; }
+        public bool p1Down { get; set; }
+        public bool p1Shoot { get; set; }
+        public int p1firerate { get; set; }
+
+        public bool p2Up { get; set; }
+        public bool p2Down { get; set; }
+        public bool p2Shoot { get; set; }
+        public int p2firerate { get; set; }
 
         public Form1()
         {
             InitializeComponent();
             DoubleBuffered = true;
             game = new Game(this);
-            firerate1 = 15;
+            p1firerate = 15;
+            p2firerate = 15;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (firerate1 >= 15)
+            if (!shouldUpdate)
+                return;
+            if (p1firerate >= 15)
             {
-                if (shooting1)
+                if (p1Shoot)
                 {
-                    game.player1.fireRight();
-                    firerate1 = 0;
+                    game.player1.fire();
+                    p1firerate = 0;
                 }
-                firerate1--;
+                p1firerate--;
             }
             else
-                firerate1++;
-            if (pressedUp)
+                p1firerate++;
+            if (p1Up && !p1Down)
                 game.player1.moveUp();
-            if (pressedDown)
+            if (p1Down && !p1Up)
                 game.player1.moveDown();
-           // if (shooting1)
-              //  game.player1.fireRight();
+            if (p2firerate >= 15)
+            {
+                if (p2Shoot)
+                {
+                    game.player2.fire();
+                    p2firerate = 0;
+                }
+                p2firerate--;
+            }
+            else
+                p2firerate++;
+            if (p2Up)
+                game.player2.moveUp();
+            if (p2Down)
+                game.player2.moveDown();
             game.update();
-            game.draw(CreateGraphics());
-        }  
+            Graphics g = CreateGraphics();
+            game.draw(g);
+            g.Dispose();
+        }
 
         public void goToMenu()
-        { 
+        {
+            shouldUpdate = false;
             pbBackground.Visible = true;
             pbPlay.Visible = true;
             pbQuit.Visible = true;
+            game = new Game(this);
             timer.Stop();
         }
 
@@ -62,6 +89,7 @@ namespace VPProjectFAB
             pbBackground.Visible = false;
             pbPlay.Visible = false;
             pbQuit.Visible = false;
+            shouldUpdate = true;
             timer.Start();
         }
 
@@ -105,31 +133,33 @@ namespace VPProjectFAB
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.W)
-                pressedUp = true;
-            //game.player1.moveUp();
+                p1Up = true;
             if (e.KeyCode == Keys.S)
-                pressedDown = true;
-            // game.player1.moveDown();
+                p1Down = true;
             if (e.KeyCode == Keys.H)
-                shooting1 = true;
-                //game.player1.fireRight();
-        }
-
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+                p1Shoot = true;
+            if (e.KeyCode == Keys.Up)
+                p2Up = true;
+            if (e.KeyCode == Keys.Down)
+                p2Down = true;
+            if (e.KeyCode == Keys.NumPad0)
+                p2Shoot = true;
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.W)
-                pressedUp = false;
-            //game.player1.moveUp();
+                p1Up = false;
             if (e.KeyCode == Keys.S)
-                pressedDown = false;
-            // game.player1.moveDown();
+                p1Down = false;
             if (e.KeyCode == Keys.H)
-                shooting1 = false;
+                p1Shoot = false;
+            if (e.KeyCode == Keys.Up)
+                p2Up = false;
+            if (e.KeyCode == Keys.Down)
+                p2Down = false;
+            if (e.KeyCode == Keys.NumPad0)
+                p2Shoot = false;
         }
     }
 }

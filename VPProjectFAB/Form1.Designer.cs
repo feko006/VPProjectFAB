@@ -49,7 +49,7 @@
             this.pbBackground.Image = ((System.Drawing.Image)(resources.GetObject("pbBackground.Image")));
             this.pbBackground.Location = new System.Drawing.Point(-6, -16);
             this.pbBackground.Name = "pbBackground";
-            this.pbBackground.Size = new System.Drawing.Size(747, 538);
+            this.pbBackground.Size = new System.Drawing.Size(678, 510);
             this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbBackground.TabIndex = 0;
             this.pbBackground.TabStop = false;
@@ -91,7 +91,6 @@
             this.Name = "Form1";
             this.Text = "VPProjectFAB";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pbBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlay)).EndInit();
