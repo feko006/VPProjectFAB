@@ -13,7 +13,8 @@ namespace VPProjectFAB
     public partial class Form1 : Form
     {
         private Game game;
-        public bool shouldUpdate { get; set; }
+        public bool shouldUpdate { get; set; }   
+
 
         public bool p1Up { get; set; }
         public bool p1Down { get; set; }
@@ -69,9 +70,13 @@ namespace VPProjectFAB
             if (p2Down)
                 game.player2.moveDown();
             game.update();
+            
             Graphics g = CreateGraphics();
+            //g.DrawImage(image, 0, 0);
+
             game.draw(g);
             g.Dispose();
+            
         }
 
         public void goToMenu()
@@ -95,6 +100,7 @@ namespace VPProjectFAB
 
         private void pbPlay_MouseEnter(object sender, EventArgs e)
         {
+            pbPlay.BackColor = Color.Transparent;
             pbPlay.Height += 10;
             pbPlay.Width += 10;
             pbPlay.Left -= 5;
@@ -160,6 +166,12 @@ namespace VPProjectFAB
                 p2Down = false;
             if (e.KeyCode == Keys.NumPad0)
                 p2Shoot = false;
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            //Image image = Image.FromFile("/img/kvit.jpeg");
+           // e.Graphics.DrawImage(image, 0, 0);
         }
     }
 }

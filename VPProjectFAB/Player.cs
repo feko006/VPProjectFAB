@@ -43,7 +43,7 @@ namespace VPProjectFAB
 
         public void moveUp()
         {
-            if (Y >= 0)
+            if (Y >= 60)
                 Y -= Speed;
         }
 
@@ -58,6 +58,8 @@ namespace VPProjectFAB
             CurrentHealth = CurrentHealth - damage;
             if(CurrentHealth <= 0)
             {
+                
+                form.shouldUpdate = false;
                 DialogResult dr = MessageBox.Show(string.Format("{0} lost...", Name), "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 if (dr == DialogResult.OK)
                 {
