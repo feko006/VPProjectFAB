@@ -17,6 +17,8 @@ namespace VPProjectFAB
         public int Y { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
+        public int MaxHealth { get; set; }
+        public int CurrentHealth { get; set; }
 
         public int Speed { get; set; }// player speed
         public int BulletSpeed { get; set; }//bullet speed
@@ -25,7 +27,7 @@ namespace VPProjectFAB
         public HashSet<Bullet> Bullets { get; set; }
 
         //ja prenesuva formata iskreno mnoogu pofino bi bilo width height da se chuvaat vo player
-        public Player(string name, int x, int y, int height, int width, Form1 form, int speed, int bulletSpeed)
+        public Player(string name, int x, int y, int height, int width, Form1 form, int speed, int bulletSpeed, int maxHealth)
         { // za form i game da ne se zamaraat so tie brojki voopshto
             this.form = form;
             Name = name;
@@ -35,6 +37,7 @@ namespace VPProjectFAB
             Width = width;
             Speed = speed;
             BulletSpeed = bulletSpeed;
+            CurrentHealth = MaxHealth = maxHealth;
             Bullets = new HashSet<Bullet>();
         }
 
@@ -50,13 +53,22 @@ namespace VPProjectFAB
                 Y += Speed;
         }
 
-        public void getHit()
+        public void getHit(int damage)
         {
-            DialogResult dr = MessageBox.Show(string.Format("{0} lost...", Name), "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            if (dr == DialogResult.OK)
+            CurrentHealth -= damage;
+            if(CurrentHealth <= 0)
             {
-                form.goToMenu();
+                DialogResult dr = MessageBox.Show(string.Format("{0} lost...", Name), "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                if (dr == DialogResult.OK)
+                {
+                    form.goToMenu();
+                }
             }
+        }
+
+        public void removeBullet(Bullet b)
+        {
+            Bullets.Remove(b);
         }
 
         /// <summary>
@@ -64,7 +76,7 @@ namespace VPProjectFAB
         /// </summary>
         /// <param name="b">bullet fired from the opponent</param>
         /// <returns>true if the bullet hits this player</returns>
-        public bool checkCollision(Bullet b)
+        public bool checkCollision(Player p, Bullet b)
         {
             // If the bullets top left and top right points coordinates are between the Player top
             if ((X < b.X && b.X < X + Width) || (X < b.X + b.Width && b.X + b.Width < X + Width))
@@ -72,6 +84,7 @@ namespace VPProjectFAB
                 // check if there is really overlap
                 if ((Y < b.Y && b.Y < Y + Height) || (Y < b.Y + b.Height && b.Y + b.Height < Y + Height))
                 {
+                    p.removeBullet(b);
                     return true;
                 }
             }

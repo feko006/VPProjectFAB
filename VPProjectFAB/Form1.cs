@@ -74,6 +74,7 @@ namespace VPProjectFAB
 
         public void goToMenu()
         {
+            shouldUpdate = false;
             pbBackground.Visible = true;
             pbPlay.Visible = true;
             pbQuit.Visible = true;

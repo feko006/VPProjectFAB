@@ -18,8 +18,8 @@ namespace VPProjectFAB
             form1 = f; // radi detali za ekranot (dolzhina, shirina), najverojatno kje sakame i na resizeend da napravime
                        // funkcija koja kje ja apdejtira ovaa promenliva neli
                        //startGame(); // za testiranje na iscrtuvanje
-            player1 = new Player("Player 1", 0, form1.Height / 2 - 50, 50, 50, form1, 5, 10);
-            player2 = new Player("Player 2", form1.Width - 75, form1.Height / 2 - 50, 50, 50, form1, 5, 10);
+            player1 = new Player("Player 1", 0, form1.Height / 2 - 50, 50, 50, form1, 5, 10, 3);
+            player2 = new Player("Player 2", form1.Width - 75, form1.Height / 2 - 50, 50, 50, form1, 5, 10, 3);
         }
 
         public void update()
@@ -44,10 +44,10 @@ namespace VPProjectFAB
             HashSet<Bullet> enemyBullets = player2.Bullets;
             foreach (Bullet bullet in enemyBullets)
             { // checks enemy bullets
-                if (player1.checkCollision(bullet))
+                if (player1.checkCollision(player2, bullet))
                 { // there is hit
-                    form1.shouldUpdate = false;
-                    player1.getHit();
+                    //form1.shouldUpdate = false;
+                    player1.getHit(1);
                     return;
                 }
             }
@@ -56,10 +56,10 @@ namespace VPProjectFAB
             enemyBullets = player1.Bullets;
             foreach (Bullet bullet in enemyBullets)
             { // check every bullet
-                if (player2.checkCollision(bullet))
+                if (player2.checkCollision(player1, bullet))
                 { // we hit him
-                    form1.shouldUpdate = false;
-                    player2.getHit();
+                    //form1.shouldUpdate = false;
+                    player2.getHit(1);
                     return;
                 }
             }
