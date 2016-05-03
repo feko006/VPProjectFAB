@@ -26,6 +26,8 @@ namespace VPProjectFAB
         //public List<Bullet> Bullets { get; set; } lista e malku nz
         public HashSet<Bullet> Bullets { get; set; }
 
+        public bool stahp { get; set; }
+
         //ja prenesuva formata iskreno mnoogu pofino bi bilo width height da se chuvaat vo player
         public Player(string name, int x, int y, int height, int width, Form1 form, int speed, int bulletSpeed, int maxHealth)
         { // za form i game da ne se zamaraat so tie brojki voopshto
@@ -39,6 +41,7 @@ namespace VPProjectFAB
             BulletSpeed = bulletSpeed;
             CurrentHealth = MaxHealth = maxHealth;
             Bullets = new HashSet<Bullet>();
+            stahp = false;
         }
 
         public void moveUp()
@@ -58,8 +61,7 @@ namespace VPProjectFAB
             CurrentHealth = CurrentHealth - damage;
             if(CurrentHealth <= 0)
             {
-                
-                form.shouldUpdate = false;
+                stahp = true;
                 DialogResult dr = MessageBox.Show(string.Format("{0} lost...", Name), "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 if (dr == DialogResult.OK)
                 {
@@ -129,6 +131,9 @@ namespace VPProjectFAB
             }
 
             p.Dispose();
+
+            if (stahp)
+                form.shouldUpdate = false;
         }
 
         public void update()

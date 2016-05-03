@@ -81,11 +81,16 @@ namespace VPProjectFAB
 
         public void goToMenu()
         {
-            shouldUpdate = false;
             pbBackground.Visible = true;
             pbPlay.Visible = true;
             pbQuit.Visible = true;
             game = new Game(this);
+            p1Up = false;
+            p1Down = false;
+            p1Shoot = false;
+            p2Up = false;
+            p2Down = false;
+            p2Shoot = false;
             timer.Stop();
         }
 
