@@ -70,13 +70,7 @@ namespace VPProjectFAB
             if (p2Down)
                 game.player2.moveDown();
             game.update();
-            
-            Graphics g = CreateGraphics();
-            //g.DrawImage(image, 0, 0);
-
-            game.draw(g);
-            g.Dispose();
-            
+            Invalidate();
         }
 
         public void goToMenu()
@@ -175,6 +169,7 @@ namespace VPProjectFAB
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            game.draw(e.Graphics);
             //Image image = Image.FromFile("/img/kvit.jpeg");
            // e.Graphics.DrawImage(image, 0, 0);
         }
