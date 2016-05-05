@@ -173,6 +173,8 @@ namespace VPProjectFAB
                 p2Down = false;
             if (e.KeyCode == Keys.NumPad0)
                 p2Shoot = false;
+            if (e.KeyCode == Keys.Escape)
+                goToMenu();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
