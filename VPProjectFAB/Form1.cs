@@ -141,7 +141,7 @@ namespace VPProjectFAB
                 p1Up = true;
             if (e.KeyCode == Keys.S)
                 p1Down = true;
-            if (e.KeyCode == Keys.H)
+            if (e.KeyCode == Keys.F)
                 p1Shoot = true;
             if (e.KeyCode == Keys.Up)
                 p2Up = true;
@@ -149,6 +149,11 @@ namespace VPProjectFAB
                 p2Down = true;
             if (e.KeyCode == Keys.NumPad0)
                 p2Shoot = true;
+
+            if (e.KeyCode == Keys.G)
+                game.player1.activateShield();
+            if (e.KeyCode == Keys.NumPad1)
+                game.player2.activateShield();
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -157,7 +162,7 @@ namespace VPProjectFAB
                 p1Up = false;
             if (e.KeyCode == Keys.S)
                 p1Down = false;
-            if (e.KeyCode == Keys.H)
+            if (e.KeyCode == Keys.F)
                 p1Shoot = false;
             if (e.KeyCode == Keys.Up)
                 p2Up = false;
