@@ -26,6 +26,7 @@ namespace VPProjectFAB
         public bool p2Shoot { get; set; }
         public int p2firerate { get; set; }
 
+
         public Form1()
         {
             InitializeComponent();
@@ -78,6 +79,7 @@ namespace VPProjectFAB
             pbBackground.Visible = true;
             pbPlay.Visible = true;
             pbQuit.Visible = true;
+            pbControls.Visible = true;
             game = new Game(this);
             p1Up = false;
             p1Down = false;
@@ -93,6 +95,7 @@ namespace VPProjectFAB
             pbBackground.Visible = false;
             pbPlay.Visible = false;
             pbQuit.Visible = false;
+            pbControls.Visible = false;
             shouldUpdate = true;
             timer.Start();
         }

@@ -34,9 +34,11 @@
             this.pbBackground = new System.Windows.Forms.PictureBox();
             this.pbPlay = new System.Windows.Forms.PictureBox();
             this.pbQuit = new System.Windows.Forms.PictureBox();
+            this.pbControls = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbQuit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbControls)).BeginInit();
             this.SuspendLayout();
             // 
             // timer
@@ -59,7 +61,7 @@
             this.pbPlay.BackColor = System.Drawing.Color.Transparent;
             this.pbPlay.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbPlay.Image = ((System.Drawing.Image)(resources.GetObject("pbPlay.Image")));
-            this.pbPlay.Location = new System.Drawing.Point(287, 206);
+            this.pbPlay.Location = new System.Drawing.Point(287, 195);
             this.pbPlay.Name = "pbPlay";
             this.pbPlay.Size = new System.Drawing.Size(100, 50);
             this.pbPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -74,7 +76,7 @@
             this.pbQuit.BackColor = System.Drawing.Color.Transparent;
             this.pbQuit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbQuit.Image = ((System.Drawing.Image)(resources.GetObject("pbQuit.Image")));
-            this.pbQuit.Location = new System.Drawing.Point(287, 285);
+            this.pbQuit.Location = new System.Drawing.Point(287, 260);
             this.pbQuit.Name = "pbQuit";
             this.pbQuit.Size = new System.Drawing.Size(100, 50);
             this.pbQuit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -84,6 +86,16 @@
             this.pbQuit.MouseEnter += new System.EventHandler(this.pbQuit_MouseEnter);
             this.pbQuit.MouseLeave += new System.EventHandler(this.pbQuit_MouseLeave);
             // 
+            // pbControls
+            // 
+            this.pbControls.BackColor = System.Drawing.Color.Transparent;
+            this.pbControls.Image = ((System.Drawing.Image)(resources.GetObject("pbControls.Image")));
+            this.pbControls.Location = new System.Drawing.Point(-3, 40);
+            this.pbControls.Name = "pbControls";
+            this.pbControls.Size = new System.Drawing.Size(676, 173);
+            this.pbControls.TabIndex = 3;
+            this.pbControls.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -91,6 +103,7 @@
             this.ClientSize = new System.Drawing.Size(668, 490);
             this.Controls.Add(this.pbQuit);
             this.Controls.Add(this.pbPlay);
+            this.Controls.Add(this.pbControls);
             this.Controls.Add(this.pbBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -103,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbQuit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbControls)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -111,6 +125,7 @@
 
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.PictureBox pbBackground;
+        private System.Windows.Forms.PictureBox pbControls;
         private System.Windows.Forms.PictureBox pbPlay;
         private System.Windows.Forms.PictureBox pbQuit;
     }

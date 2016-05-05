@@ -122,7 +122,10 @@ namespace VPProjectFAB
         
         public void fire()
         {
-            Bullets.Add(new Bullet(X, Y + 20, 5, 50, BulletSpeed));
+            int bulletOffset = Width;
+            if (BulletSpeed < 0)
+                bulletOffset = -bulletOffset;
+            Bullets.Add(new Bullet(X + bulletOffset, Y + 20, 5, 50, BulletSpeed));
         }
 
         public void draw(Graphics g)
