@@ -133,11 +133,11 @@ namespace VPProjectFAB
             Brush playerColor = Brushes.White; // belo default
             if (blinkGreen)
             {
-                playerColor = Brushes.Green; // da svetne zeleno
+                playerColor = Brushes.LimeGreen; // da svetne zeleno
             }
             if (SpecialPower) // ako e aktiviran shild
             {
-                playerColor = Brushes.Blue; // blu
+                playerColor = Brushes.DeepSkyBlue; // blu
             }
 
             g.FillRectangle(playerColor, X, Y, Width, Height);
