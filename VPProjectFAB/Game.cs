@@ -11,6 +11,9 @@ namespace VPProjectFAB
     {
         public Player player1 { get; set; }
         public Player player2 { get; set; }
+
+        Image image = Image.FromFile("..\\..\\img\\gamebg.jpg");
+
         Form1 form1;
 
         public Game(Form1 f)
@@ -19,9 +22,12 @@ namespace VPProjectFAB
                        // funkcija koja kje ja apdejtira ovaa promenliva neli
                        //startGame(); // za testiranje na iscrtuvanje
             player1 = new Player("Player 1", 0, form1.Height / 2 - 50, 50, 50, form1, 5, 10, 3);
-            player2 = new Player("Player 2", form1.Width - 75, form1.Height / 2 - 50, 50, 50, form1, 5, -10, 3);
+            player2 = new Player("Player 2", form1.Width - 65, form1.Height / 2 - 50, 50, 50, form1, 5, -10, 3);
         }
 
+        /// <summary>
+        /// update se povikuva vo tajmerot pred da se iscrta draw
+        /// </summary>
         public void update()
         {
             checkCollisions();
@@ -31,9 +37,11 @@ namespace VPProjectFAB
 
         public void draw(Graphics g)
         {
-            g.Clear(Color.Black);
+            g.DrawImage(image, 0, 0, 676, 502);
+            //g.Clear(Color.Black);
             player1.draw(g);
             player2.draw(g);
+            
         }
         
         /// <summary>

@@ -26,6 +26,8 @@ namespace VPProjectFAB
         //public List<Bullet> Bullets { get; set; } lista e malku nz
         public HashSet<Bullet> Bullets { get; set; }
 
+        public bool stahp { get; set; }
+
         //ja prenesuva formata iskreno mnoogu pofino bi bilo width height da se chuvaat vo player
         public Player(string name, int x, int y, int height, int width, Form1 form, int speed, int bulletSpeed, int maxHealth)
         { // za form i game da ne se zamaraat so tie brojki voopshto
@@ -39,11 +41,12 @@ namespace VPProjectFAB
             BulletSpeed = bulletSpeed;
             CurrentHealth = MaxHealth = maxHealth;
             Bullets = new HashSet<Bullet>();
+            stahp = false;
         }
 
         public void moveUp()
         {
-            if (Y >= 0)
+            if (Y >= 60)
                 Y -= Speed;
         }
 
@@ -58,6 +61,7 @@ namespace VPProjectFAB
             CurrentHealth = CurrentHealth - damage;
             if(CurrentHealth <= 0)
             {
+                stahp = true;
                 DialogResult dr = MessageBox.Show(string.Format("{0} lost...", Name), "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 if (dr == DialogResult.OK)
                 {
@@ -85,7 +89,7 @@ namespace VPProjectFAB
                 if ((Y < b.Y && b.Y < Y + Height) || (Y < b.Y + b.Height && b.Y + b.Height < Y + Height))
                 {
                     p.removeBullet(b);
-                    return true;
+                    return true; // there is overlap
                 }
             }
 
@@ -113,20 +117,26 @@ namespace VPProjectFAB
             }
 
             // draw the healthbar
-
+            Brush hpColor = Brushes.White;
+            if (CurrentHealth <= 1)
+                hpColor = Brushes.Red;
             int oneBar = 225 / MaxHealth;
             if (BulletSpeed > 0) // if its the left player (player1)
             {
-                g.FillRectangle(Brushes.White, 75, 10, oneBar * CurrentHealth, 20);
+                
+                g.FillRectangle(hpColor, 75, 10, oneBar * CurrentHealth, 20);
                 g.DrawRectangle(p, 75 + oneBar * CurrentHealth, 10, oneBar * (MaxHealth - CurrentHealth), 20);
             }
             if(BulletSpeed < 0) // the other player
             {
-                g.FillRectangle(Brushes.White, form.Width - 325, 10, oneBar * CurrentHealth, 20);
+                g.FillRectangle(hpColor, form.Width - 325, 10, oneBar * CurrentHealth, 20);
                 g.DrawRectangle(p, form.Width - 325 + oneBar * CurrentHealth, 10, oneBar * (MaxHealth - CurrentHealth), 20);
             }
 
             p.Dispose();
+
+            if (stahp)
+                form.shouldUpdate = false;
         }
 
         public void update()
@@ -144,6 +154,9 @@ namespace VPProjectFAB
                     // ili da merime kolku rastojanie ima pominato i da ima max rastojanie
                     // shto kje se predava od samata forma pa nataka
                     // DA SE RAZMISLI DALI BULLETS DA SE CHUVAAT VO SET
+
+                    // si napravivme diskusija ovde mislam deka mozheme da go izbrisheme 
+                    // celovo so komentarive deka it just works
                 }
         }
     }

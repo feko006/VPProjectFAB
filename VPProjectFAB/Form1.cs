@@ -13,7 +13,8 @@ namespace VPProjectFAB
     public partial class Form1 : Form
     {
         private Game game;
-        public bool shouldUpdate { get; set; }
+        public bool shouldUpdate { get; set; }   
+
 
         public bool p1Up { get; set; }
         public bool p1Down { get; set; }
@@ -69,18 +70,21 @@ namespace VPProjectFAB
             if (p2Down)
                 game.player2.moveDown();
             game.update();
-            Graphics g = CreateGraphics();
-            game.draw(g);
-            g.Dispose();
+            Invalidate();
         }
 
         public void goToMenu()
         {
-            shouldUpdate = false;
             pbBackground.Visible = true;
             pbPlay.Visible = true;
             pbQuit.Visible = true;
             game = new Game(this);
+            p1Up = false;
+            p1Down = false;
+            p1Shoot = false;
+            p2Up = false;
+            p2Down = false;
+            p2Shoot = false;
             timer.Stop();
         }
 
@@ -95,6 +99,7 @@ namespace VPProjectFAB
 
         private void pbPlay_MouseEnter(object sender, EventArgs e)
         {
+            pbPlay.BackColor = Color.Transparent;
             pbPlay.Height += 10;
             pbPlay.Width += 10;
             pbPlay.Left -= 5;
@@ -160,6 +165,13 @@ namespace VPProjectFAB
                 p2Down = false;
             if (e.KeyCode == Keys.NumPad0)
                 p2Shoot = false;
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            game.draw(e.Graphics);
+            //Image image = Image.FromFile("/img/kvit.jpeg");
+           // e.Graphics.DrawImage(image, 0, 0);
         }
     }
 }
