@@ -180,8 +180,7 @@ namespace VPProjectFAB
                 blinkGreen = true;//kje blinkne zeleno
             else
                 blinkGreen = false;
-
-            Console.Write(" '" + specialPowerCounter + "' ");
+            
             if (Bullets.Count > 0)
                 foreach (Bullet bullet in Bullets)
                 {
