@@ -26,6 +26,7 @@ namespace VPProjectFAB
         public bool p2Shoot { get; set; }
         public int p2firerate { get; set; }
 
+
         public Form1()
         {
             InitializeComponent();
@@ -78,6 +79,7 @@ namespace VPProjectFAB
             pbBackground.Visible = true;
             pbPlay.Visible = true;
             pbQuit.Visible = true;
+            pbControls.Visible = true;
             game = new Game(this);
             p1Up = false;
             p1Down = false;
@@ -93,6 +95,7 @@ namespace VPProjectFAB
             pbBackground.Visible = false;
             pbPlay.Visible = false;
             pbQuit.Visible = false;
+            pbControls.Visible = false;
             shouldUpdate = true;
             timer.Start();
         }
@@ -141,7 +144,7 @@ namespace VPProjectFAB
                 p1Up = true;
             if (e.KeyCode == Keys.S)
                 p1Down = true;
-            if (e.KeyCode == Keys.H)
+            if (e.KeyCode == Keys.F)
                 p1Shoot = true;
             if (e.KeyCode == Keys.Up)
                 p2Up = true;
@@ -149,6 +152,11 @@ namespace VPProjectFAB
                 p2Down = true;
             if (e.KeyCode == Keys.NumPad0)
                 p2Shoot = true;
+
+            if (e.KeyCode == Keys.G)
+                game.player1.activateShield();
+            if (e.KeyCode == Keys.NumPad1)
+                game.player2.activateShield();
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -157,7 +165,7 @@ namespace VPProjectFAB
                 p1Up = false;
             if (e.KeyCode == Keys.S)
                 p1Down = false;
-            if (e.KeyCode == Keys.H)
+            if (e.KeyCode == Keys.F)
                 p1Shoot = false;
             if (e.KeyCode == Keys.Up)
                 p2Up = false;
@@ -165,6 +173,8 @@ namespace VPProjectFAB
                 p2Down = false;
             if (e.KeyCode == Keys.NumPad0)
                 p2Shoot = false;
+            if (e.KeyCode == Keys.Escape)
+                goToMenu();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)

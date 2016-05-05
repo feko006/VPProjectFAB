@@ -28,6 +28,12 @@ namespace VPProjectFAB
 
         public bool stahp { get; set; }
 
+        public bool SpecialPower { get; set; }
+        private int specialPowerCounter;
+
+        private const int SPECIAL_POWER_TIME = 200;
+        private bool blinkGreen;
+
         //ja prenesuva formata iskreno mnoogu pofino bi bilo width height da se chuvaat vo player
         public Player(string name, int x, int y, int height, int width, Form1 form, int speed, int bulletSpeed, int maxHealth)
         { // za form i game da ne se zamaraat so tie brojki voopshto
@@ -42,6 +48,10 @@ namespace VPProjectFAB
             CurrentHealth = MaxHealth = maxHealth;
             Bullets = new HashSet<Bullet>();
             stahp = false;
+
+            SpecialPower = false;
+            specialPowerCounter = 0;
+            blinkGreen = false;
         }
 
         public void moveUp()
@@ -58,6 +68,11 @@ namespace VPProjectFAB
 
         public void getHit(int damage)
         {
+            if (SpecialPower)
+            { // ako ima hit ama ima shild
+                SpecialPower = false;
+                return; // Izbegnuva hit zaradi shildot xD
+            }
             CurrentHealth = CurrentHealth - damage;
             if(CurrentHealth <= 0)
             {
@@ -67,6 +82,15 @@ namespace VPProjectFAB
                 {
                     form.goToMenu();
                 }
+            }
+        }
+
+        public void activateShield()
+        {
+            if (specialPowerCounter <= 0 && !SpecialPower)
+            {
+                SpecialPower = true;
+                specialPowerCounter = SPECIAL_POWER_TIME;
             }
         }
 
@@ -98,7 +122,10 @@ namespace VPProjectFAB
         
         public void fire()
         {
-            Bullets.Add(new Bullet(X, Y + 20, 5, 50, BulletSpeed));
+            int bulletOffset = Width;
+            if (BulletSpeed < 0)
+                bulletOffset = -bulletOffset;
+            Bullets.Add(new Bullet(X + bulletOffset, Y + 20, 5, 50, BulletSpeed));
         }
 
         public void draw(Graphics g)
@@ -106,8 +133,17 @@ namespace VPProjectFAB
             Pen p = new Pen(Color.White, 1);
 
             // draw the player
+            Brush playerColor = Brushes.White; // belo default
+            if (blinkGreen)
+            {
+                playerColor = Brushes.LimeGreen; // da svetne zeleno
+            }
+            if (SpecialPower) // ako e aktiviran shild
+            {
+                playerColor = Brushes.DeepSkyBlue; // blu
+            }
 
-            g.FillRectangle(Brushes.White, X, Y, Width, Height);
+            g.FillRectangle(playerColor, X, Y, Width, Height);
 
             // then bullets
 
@@ -141,6 +177,13 @@ namespace VPProjectFAB
 
         public void update()
         {
+            if (specialPowerCounter > 0 && !SpecialPower)
+            specialPowerCounter--; // se namaluva tajmerot neli
+            if (specialPowerCounter == 1 || specialPowerCounter == 2) // koga kje stane 0 aka slobodno
+                blinkGreen = true;//kje blinkne zeleno
+            else
+                blinkGreen = false;
+            
             if (Bullets.Count > 0)
                 foreach (Bullet bullet in Bullets)
                 {
