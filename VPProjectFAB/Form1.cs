@@ -36,6 +36,9 @@ namespace VPProjectFAB
             p2firerate = 15;
         }
 
+        /// <summary>
+        /// Timer function that happens once a frame
+        /// </summary>
         private void timer_Tick(object sender, EventArgs e)
         {
             if (!shouldUpdate)
@@ -74,6 +77,9 @@ namespace VPProjectFAB
             Invalidate();
         }
 
+        /// <summary>
+        /// Ends the game and starts the menu screen
+        /// </summary>
         public void goToMenu()
         {
             pbBackground.Visible = true;
@@ -90,6 +96,11 @@ namespace VPProjectFAB
             timer.Stop();
         }
 
+        /// <summary>
+        /// Event handler for click on the play button - starts game
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Arguments</param>
         private void pbPlay_Click(object sender, EventArgs e)
         {
             pbBackground.Visible = false;
@@ -100,6 +111,9 @@ namespace VPProjectFAB
             timer.Start();
         }
 
+        /// <summary>
+        /// Event handler for mouseenter animations on play button
+        /// </summary>
         private void pbPlay_MouseEnter(object sender, EventArgs e)
         {
             pbPlay.BackColor = Color.Transparent;
@@ -109,6 +123,9 @@ namespace VPProjectFAB
             pbPlay.Top -= 5;
         }
 
+        /// <summary>
+        /// Event handler for mouseleave animations on play button
+        /// </summary>
         private void pbPlay_MouseLeave(object sender, EventArgs e)
         {
             pbPlay.Height -= 10;
@@ -117,6 +134,9 @@ namespace VPProjectFAB
             pbPlay.Top += 5;
         }
 
+        /// <summary>
+        /// Event handler for click on Quit
+        /// </summary>
         private void pbQuit_Click(object sender, EventArgs e)
         {
             Close();
@@ -138,6 +158,9 @@ namespace VPProjectFAB
             pbQuit.Top += 5;
         }
 
+        /// <summary>
+        /// Keydown handler for controls
+        /// </summary>
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.W)
@@ -177,11 +200,12 @@ namespace VPProjectFAB
                 goToMenu();
         }
 
+        /// <summary>
+        /// Paint handler
+        /// </summary>
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             game.draw(e.Graphics);
-            //Image image = Image.FromFile("/img/kvit.jpeg");
-           // e.Graphics.DrawImage(image, 0, 0);
         }
     }
 }

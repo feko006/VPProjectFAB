@@ -16,6 +16,10 @@ namespace VPProjectFAB
 
         Form1 form1;
 
+        /// <summary>
+        /// Creates new game
+        /// </summary>
+        /// <param name="f">Form reference</param>
         public Game(Form1 f)
         {
             form1 = f; // radi detali za ekranot (dolzhina, shirina), najverojatno kje sakame i na resizeend da napravime
@@ -26,7 +30,7 @@ namespace VPProjectFAB
         }
 
         /// <summary>
-        /// update se povikuva vo tajmerot pred da se iscrta draw
+        /// Updates the players before drawing them
         /// </summary>
         public void update()
         {
@@ -35,6 +39,10 @@ namespace VPProjectFAB
             player2.update();
         }
 
+        /// <summary>
+        /// Draw the players
+        /// </summary>
+        /// <param name="g">Graphics reference</param>
         public void draw(Graphics g)
         {
             g.DrawImage(image, 0, 0, 676, 502);

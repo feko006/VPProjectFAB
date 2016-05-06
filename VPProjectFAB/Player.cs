@@ -120,6 +120,9 @@ namespace VPProjectFAB
             return false; // there is no overlap if this is reached
         }
         
+        /// <summary>
+        /// Fires a bullet (creates new one)
+        /// </summary>
         public void fire()
         {
             int bulletOffset = Width;
@@ -128,6 +131,10 @@ namespace VPProjectFAB
             Bullets.Add(new Bullet(X + bulletOffset, Y + 20, 5, 50, BulletSpeed));
         }
 
+        /// <summary>
+        /// Draw the player and his bullets
+        /// </summary>
+        /// <param name="g">Graphics reference</param>
         public void draw(Graphics g)
         {
             Pen p = new Pen(Color.White, 1);
@@ -175,6 +182,9 @@ namespace VPProjectFAB
                 form.shouldUpdate = false;
         }
 
+        /// <summary>
+        /// Update function that moves the bullets
+        /// </summary>
         public void update()
         {
             if (specialPowerCounter > 0 && !SpecialPower)
@@ -188,18 +198,6 @@ namespace VPProjectFAB
                 foreach (Bullet bullet in Bullets)
                 {
                     bullet.move();
-                    //if (bullet.X > form.Width) // ovde go nishtam treba da se smisli so iterator namesto vaka
-                    //    Bullets.Remove(bullet); // mislam deka taka kje go pretupime bulet deka ne treba
-                    // samo da zgine tuku da se izbrishe od playerot
-                    // bullet knows when to commit suicide Kappa
-                    // najverojatno kje se predava nekoj argument za dolzhina na ekran preku nekoi funkcii
-                    // pa kje znae ako x > that suicide() xD
-                    // ili da merime kolku rastojanie ima pominato i da ima max rastojanie
-                    // shto kje se predava od samata forma pa nataka
-                    // DA SE RAZMISLI DALI BULLETS DA SE CHUVAAT VO SET
-
-                    // si napravivme diskusija ovde mislam deka mozheme da go izbrisheme 
-                    // celovo so komentarive deka it just works
                 }
         }
     }
