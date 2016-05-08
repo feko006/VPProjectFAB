@@ -61,7 +61,7 @@
             this.pbPlay.BackColor = System.Drawing.Color.Transparent;
             this.pbPlay.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbPlay.Image = ((System.Drawing.Image)(resources.GetObject("pbPlay.Image")));
-            this.pbPlay.Location = new System.Drawing.Point(251, 178);
+            this.pbPlay.Location = new System.Drawing.Point(251, 218);
             this.pbPlay.Name = "pbPlay";
             this.pbPlay.Size = new System.Drawing.Size(170, 76);
             this.pbPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -76,7 +76,7 @@
             this.pbQuit.BackColor = System.Drawing.Color.Transparent;
             this.pbQuit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbQuit.Image = ((System.Drawing.Image)(resources.GetObject("pbQuit.Image")));
-            this.pbQuit.Location = new System.Drawing.Point(249, 260);
+            this.pbQuit.Location = new System.Drawing.Point(250, 296);
             this.pbQuit.Name = "pbQuit";
             this.pbQuit.Size = new System.Drawing.Size(170, 76);
             this.pbQuit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -90,9 +90,9 @@
             // 
             this.pbControls.BackColor = System.Drawing.Color.Transparent;
             this.pbControls.Image = ((System.Drawing.Image)(resources.GetObject("pbControls.Image")));
-            this.pbControls.Location = new System.Drawing.Point(-3, 40);
+            this.pbControls.Location = new System.Drawing.Point(-3, 28);
             this.pbControls.Name = "pbControls";
-            this.pbControls.Size = new System.Drawing.Size(676, 173);
+            this.pbControls.Size = new System.Drawing.Size(676, 198);
             this.pbControls.TabIndex = 3;
             this.pbControls.TabStop = false;
             // 

@@ -25,3 +25,7 @@ C:\Users\Bonne\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.Properties.Resou
 C:\Users\Bonne\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.csproj.GenerateResource.Cache
 C:\Users\Bonne\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.exe
 C:\Users\Bonne\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.pdb
+C:\Users\AtanasK\VPProjectFAB\VPProjectFAB\bin\Debug\VPProjectFAB.exe.manifest
+C:\Users\AtanasK\VPProjectFAB\VPProjectFAB\bin\Debug\VPProjectFAB.application
+C:\Users\AtanasK\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.exe.manifest
+C:\Users\AtanasK\VPProjectFAB\VPProjectFAB\obj\Debug\VPProjectFAB.application
