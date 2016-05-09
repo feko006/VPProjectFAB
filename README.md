@@ -1,4 +1,5 @@
 # Squarelactica
+![logo](http://i.imgur.com/9HJX4c3.png)
 
 ##1. Опис
 
@@ -27,8 +28,58 @@ Squarelactica е игра во која двајца играчи на 2 раз�
 Во оваа класа се проверуваат колизии помеѓу куршуми и играчи (checkCollisions), се менува состојбата и се исцртуваат играчите заедно со нивните елементи.
 
 ##3. Опис на функции
+Функциите се документирани.
 
-инсерт опис
+####Game.update() - функција која се повикува во тајмерот пред да се повика draw() функцијата
+```c#
+        /// <summary>
+        /// Updates the players before drawing them
+        /// </summary>
+        public void update()
+        {
+            checkCollisions();
+            player1.update();
+            player2.update();
+        }
+```
+*Повикува проверка за колизии, и подоцна update() функциите на двата играчи
+
+####Player.update() - функција за обновување на играчот
+```c#
+        /// <summary>
+        /// Update function that moves the bullets
+        /// </summary>
+        public void update()
+        {
+            if (specialPowerCounter > 0 && !SpecialPower)
+            specialPowerCounter--; // se namaluva brojachot za cooldown na shtitot
+            if (specialPowerCounter == 1 || specialPowerCounter == 2) // koga kje stane 0 aka slobodno
+                blinkGreen = true; //kje blinkne zeleno
+            else
+                blinkGreen = false; // inaku se gasi
+            
+            if (Bullets.Count > 0)
+                foreach (Bullet bullet in Bullets)
+                {
+                    bullet.move();
+                }
+        }
+```
+Секој од објектите за играчите преку оваа функција се грижи за движењата на куршумите, и се искористува оваа функција дека се случува еднаш во секој frame за преку неа да работи бројачот за штитот.
+
+####Player.fire() - функција преку која пука играчот
+```c#
+        /// <summary>
+        /// Fires a bullet (creates new one)
+        /// </summary>
+        public void fire()
+        {
+            int bulletOffset = Width;
+            if (BulletSpeed < 0)
+                bulletOffset = -bulletOffset;
+            Bullets.Add(new Bullet(X + bulletOffset, Y + 20, 5, 50, BulletSpeed));
+        }
+```
 
 ##4. Скриншот од завршена игра
 
